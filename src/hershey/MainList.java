@@ -32,10 +32,13 @@ public class MainList extends JFrame{
         GridBagLayout listcomGrid = new GridBagLayout();
         
         //이미지 객체
-        ImageIcon addImg = new ImageIcon("image/add.jpg");
+        ImageIcon addImg = new ImageIcon("./Button_Image/add.png");
         
         //buttons 객체 
-        JButton addlistButton = new JButton(addImg);
+        JButton addlistButton = new JButton("짜장");
+        addlistButton.setRolloverIcon(addImg);
+        addlistButton.setBorderPainted(false);
+        addlistButton.setPreferredSize(new Dimension(50,50));
         
         setLayout(gbl);
         //텍스트 입력창
