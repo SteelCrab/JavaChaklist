@@ -14,6 +14,7 @@ public class MainList extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("MainList");
         
+        Container con = getContentPane();
         
         //패널 객체모음
         JPanel listPanel = new JPanel();
@@ -23,14 +24,18 @@ public class MainList extends JFrame{
         JPanel[] listcheckPanel = new JPanel[LIST_SIZE];
         JPanel[] listcheckcomPanel = new JPanel[LIST_SIZE];
        
-        //그리드 객체 생성 
+        //테두리 객체  
         GridBagConstraints gbc = new GridBagConstraints();
         GridBagConstraints gbclistcheck = new GridBagConstraints();
         GridBagLayout gbl = new GridBagLayout();
         GridBagLayout listgrid = new GridBagLayout();
         GridBagLayout listcomGrid = new GridBagLayout();
         
-        JButton addlistButton = new JButton("+");
+        //이미지 객체
+        ImageIcon addImg = new ImageIcon("image/add.jpg");
+        
+        //buttons 객체 
+        JButton addlistButton = new JButton( new ImageIcon("images/add.png"));
         
         setLayout(gbl);
         //텍스트 입력창
@@ -39,13 +44,19 @@ public class MainList extends JFrame{
         //라벨 리스트
         JLabel[] labelChecklist = new JLabel[10];
         JLabel[] labelComlist = new JLabel[10];
-        for(int i=0;i<labelChecklist.length;i++) {labelChecklist[i] = new JLabel("CheckNULL");}
+        //할 일 라벨 리스트 생성
+        for(int i=0;i<labelChecklist.length;i++) 
+        {labelChecklist[i] = new JLabel("CheckNULL");}
         
-        for(int i=0;i<labelComlist.length;i++) {labelComlist[i] = new JLabel("ComNULL");}
+        //완료된 라벨 리스트 생성 
+        for(int i=0;i<labelComlist.length;i++)
+        {labelComlist[i] = new JLabel("ComNULL");}
 		/*
-		 * for(JLabel labelarray : labelChecklist) { labelarray = new JLabel("NULL"); }
+		 * for(JLabel labelarray : labelChecklist)
+		 *  { labelarray = new JLabel("NULL"); }
 		 */
-      
+        
+      //할일 + 완료 라벨 리스트 폰트 설정
         for(int i=0; i<labelChecklist.length;i++) {
         //checklist
         	labelChecklist[i].setFont(new Font("verdana",1,15));
@@ -62,14 +73,13 @@ public class MainList extends JFrame{
         listcomPanel.setBackground(backgroundColor);
         tflistPanel.setBackground(tfColorblue);
         tflistInput.setBackground(tfColorblue);
-        
+       
         
         //테두리선 정의
         LineBorder lineBorderblack = new LineBorder(backgroundColor,10,true);
         LineBorder comLineBordergreen = new LineBorder(backgroundColor,10,true);
         LineBorder tflineBorderyello = new LineBorder(backgroundColor,10,true);
         LineBorder listcheckBorderblue = new LineBorder(backgroundColor,1);
-        
         //...............//
         
         //각 패널에 테두리 프로퍼티 선언
@@ -111,14 +121,15 @@ public class MainList extends JFrame{
         add(listPanel,gbc);
         listPanel.setLayout(listgrid);
 		for(int i=0;i<listcheckPanel.length;i++) {
-			listcheckPanel[i] = new JPanel();
-			
+			listcheckPanel[i] = new JPanel();	
 			listcheckPanel[i].setBorder(listcheckBorderblue);
 			listcheckPanel[i].setBackground(Color.white);
-		 gbclistcheck.gridy =i+1; 
-		 listPanel.add(listcheckPanel[i],gbclistcheck);	
-		 listcheckPanel[i].add(labelChecklist[i]);
+			gbclistcheck.gridy =i+1; 
+			
+			listPanel.add(listcheckPanel[i],gbclistcheck);	
+			listcheckPanel[i].add(labelChecklist[i]);
 		 }	
+		
         //...............//
 		//완성텍스트패널 
 		gbc.gridy = 2;
@@ -134,6 +145,7 @@ public class MainList extends JFrame{
       		listcheckcomPanel[j].setBorder(listcheckBorderblue);
       		listcheckcomPanel[j].setBackground(colorblue);
   			gbclistcheck.gridy =j+1; 
+  			
   			listcomPanel.add(listcheckcomPanel[j],gbclistcheck);
   			listcheckcomPanel[j].add(labelComlist[j]);
       		}
