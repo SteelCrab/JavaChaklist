@@ -35,7 +35,7 @@ public class MainList extends JFrame{
         ImageIcon addImg = new ImageIcon("image/add.jpg");
         
         //buttons 객체 
-        JButton addlistButton = new JButton( new ImageIcon("images/add.png"));
+        JButton addlistButton = new JButton(addImg);
         
         setLayout(gbl);
         //텍스트 입력창
