@@ -11,6 +11,7 @@ public class MainList extends JFrame{
 	private	int textCount;
 	public MainList() {
 		setSize(500, 500);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("MainList");
         
@@ -32,13 +33,12 @@ public class MainList extends JFrame{
         GridBagLayout listcomGrid = new GridBagLayout();
         
         //이미지 객체
-        ImageIcon addImg = new ImageIcon("./Button_Image/add.png");
+        ImageIcon addImage1 = new ImageIcon("./ButtonImage/listPlus.png");
         
         //buttons 객체 
-        JButton addlistButton = new JButton("짜장");
-        addlistButton.setRolloverIcon(addImg);
-        addlistButton.setBorderPainted(false);
-        addlistButton.setPreferredSize(new Dimension(50,50));
+        JButton addlistButton = new JButton(addImage1);
+        //addlistButton.setRolloverIcon(addImg);
+        addlistButton.setPreferredSize(new Dimension(40,40));
         
         setLayout(gbl);
         //텍스트 입력창
@@ -116,8 +116,9 @@ public class MainList extends JFrame{
         //작업패널안에 텍스트필드 프로퍼티 선언
         tflistPanel.setLayout(new BorderLayout());
         tflistPanel.add(addlistButton,BorderLayout.WEST);
-        tflistPanel.add(tflistInput,BorderLayout.CENTER);
-        
+        tflistPanel.add(tflistInput,BorderLayout.CENTER);;
+        con.add(tflistPanel);
+               
         //...............//
         
         //리스트 패널 추가
