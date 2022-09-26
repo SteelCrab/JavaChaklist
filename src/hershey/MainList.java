@@ -10,6 +10,7 @@ public class MainList extends JFrame{
 	private final static int LIST_SIZE = 5;
 	private	int textCount;
 	private boolean star =false;
+	
 	public MainList() {
 		setSize(500, 500);
 		//setResizable(false);
@@ -215,7 +216,7 @@ public class MainList extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
  }
-	
+
 	public static void main(String[]args) {
 		new MainList();
 }
