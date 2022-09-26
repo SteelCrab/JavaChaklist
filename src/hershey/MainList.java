@@ -11,7 +11,7 @@ public class MainList extends JFrame{
 	private	int textCount;
 	public MainList() {
 		setSize(500, 500);
-		setResizable(false);
+		//setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("MainList");
         
@@ -34,12 +34,13 @@ public class MainList extends JFrame{
         
         //이미지 객체
         ImageIcon addImage1 = new ImageIcon("./ButtonImage/listPlus.png");
-        
+        ImageIcon emptyStar = new ImageIcon("./ButtonImage/emptyStar.png");
         //buttons 객체 
         JButton addlistButton = new JButton(addImage1);
+        JButton[] starButton = new JButton[10];
         //addlistButton.setRolloverIcon(addImg);
-        addlistButton.setPreferredSize(new Dimension(40,40));
-        
+        addlistButton.setPreferredSize(new Dimension(30,30));
+       
         setLayout(gbl);
         //텍스트 입력창
         JTextField tflistInput = new JTextField(10);
@@ -49,12 +50,17 @@ public class MainList extends JFrame{
         JLabel[] labelComlist = new JLabel[10];
         //할 일 라벨 리스트 생성
         for(int i=0;i<labelChecklist.length;i++) 
-        {labelChecklist[i] = new JLabel("CheckNULL");}
+        {labelChecklist[i] = new JLabel("CheckNULL");
+        starButton[i] = new JButton(emptyStar);
+        starButton[i].setPreferredSize(new Dimension(40,40));
+        }
         
         //완료된 라벨 리스트 생성 
         for(int i=0;i<labelComlist.length;i++)
-        {labelComlist[i] = new JLabel("ComNULL");}
-		/*
+        {labelComlist[i] = new JLabel("ComNULL");
+        
+        }
+        /*
 		 * for(JLabel labelarray : labelChecklist)
 		 *  { labelarray = new JLabel("NULL"); }
 		 */
@@ -64,6 +70,7 @@ public class MainList extends JFrame{
         //checklist
         	labelChecklist[i].setFont(new Font("verdana",1,15));
         	labelComlist[i].setFont(new Font("verdana",1,15));
+        	
         }
         //...............//
         
@@ -81,7 +88,7 @@ public class MainList extends JFrame{
         //테두리선 정의
         LineBorder lineBorderblack = new LineBorder(backgroundColor,10,true);
         LineBorder comLineBordergreen = new LineBorder(backgroundColor,10,true);
-        LineBorder tflineBorderyello = new LineBorder(backgroundColor,10,true);
+        LineBorder tflineBorderyello = new LineBorder(tfColorblue,10,true);
         LineBorder listcheckBorderblue = new LineBorder(backgroundColor,1);
         //...............//
         
@@ -131,8 +138,10 @@ public class MainList extends JFrame{
 			gbclistcheck.gridy =i+1; 
 			
 			listPanel.add(listcheckPanel[i],gbclistcheck);	
-			listcheckPanel[i].add(labelChecklist[i]);
-		 }	
+			listcheckPanel[i].setLayout(new BorderLayout());
+			listcheckPanel[i].add(labelChecklist[i],BorderLayout.CENTER);
+			listcheckPanel[i].add(starButton[i],BorderLayout.EAST);
+		}	
 		
         //...............//
 		//완성텍스트패널 
@@ -183,6 +192,8 @@ public class MainList extends JFrame{
         		 if(textCount >9) {textCount = 0;}
         	}
         });
+        
+        
        
         setLocationRelativeTo(null);
         setVisible(true);
