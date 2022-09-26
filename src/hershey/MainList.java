@@ -9,6 +9,7 @@ import javax.swing.border.*;
 public class MainList extends JFrame{
 	private final static int LIST_SIZE = 5;
 	private	int textCount;
+	private boolean star =false;
 	public MainList() {
 		setSize(500, 500);
 		//setResizable(false);
@@ -35,8 +36,11 @@ public class MainList extends JFrame{
         //이미지 객체
         ImageIcon addImage1 = new ImageIcon("./ButtonImage/listPlus.png");
         ImageIcon emptyStar = new ImageIcon("./ButtonImage/emptyStar.png");
+        ImageIcon fillStar  = new ImageIcon("./ButtonImage/fillStar.png");
+        
         //buttons 객체 
         JButton addlistButton = new JButton(addImage1);
+        
         JButton[] starButton = new JButton[10];
         //addlistButton.setRolloverIcon(addImg);
         addlistButton.setPreferredSize(new Dimension(30,30));
@@ -51,6 +55,7 @@ public class MainList extends JFrame{
         //할 일 라벨 리스트 생성
         for(int i=0;i<labelChecklist.length;i++) 
         {labelChecklist[i] = new JLabel("CheckNULL");
+        labelChecklist[i].setHorizontalAlignment(SwingConstants.CENTER);
         starButton[i] = new JButton(emptyStar);
         starButton[i].setPreferredSize(new Dimension(40,40));
         }
@@ -193,6 +198,18 @@ public class MainList extends JFrame{
         	}
         });
         
+        ActionListener starListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        	if(star == false) {
+        	starButton[0].setIcon(fillStar);
+        	star = true;
+        	}else if(star == true) {
+        	starButton[0].setIcon(emptyStar);
+        	star =  false;
+        	}
+        }};
+        starButton[0].addActionListener(starListener);
         
        
         setLocationRelativeTo(null);
