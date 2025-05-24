@@ -7,5 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="ButtonImage"/>
+	<classpathentry kind="src" path="saveList"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
